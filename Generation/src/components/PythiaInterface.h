@@ -51,6 +51,7 @@ private:
   int m_iEvent{0};
   bool m_doMePsMatching{false};
   bool m_doMePsMerging{false};
+  double m_sigmaTot{0};
 
   /// Pythia8 engine for ME/PS matching
   std::unique_ptr<Pythia8::JetMatchingMadgraph> m_matching{nullptr};
