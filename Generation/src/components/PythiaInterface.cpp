@@ -34,7 +34,9 @@ PythiaInterface::PythiaInterface(const std::string& type, const std::string& nam
       m_pythiaSignal(nullptr),
       m_nAbort(0),
       m_iAbort(0),
-      m_sigmaTot(0),
+      //Reza
+      m_sigma(0),
+
       m_iEvent(0),
       m_doMePsMatching(0),
       m_doMePsMerging(0),
@@ -285,17 +287,19 @@ StatusCode PythiaInterface::getNextEvent(HepMC::GenEvent& theEvent) {
 }
 
 StatusCode PythiaInterface::finalize() {
-
-  m_pythiaSignal.reset();
-  return GaudiTool::finalize();
-    
   // mine 
-  double sigma = m_sigmaTot();
+  //m_sigma->SigmaTotal.sigmaTot();
+  double sigma = SigmaTotal.sigmaTot();
     std::cout << " Cross section is " << std::scientific << std::setprecision(5)
          << sigma <<std::endl;
   std::ofstream logging;
   logging.open("Xsections_fcc.txt", std::ios_base::app); 
   logging << sigma << std::endl;
   logging.close(); 
+    
+  m_pythiaSignal.reset();
+  return GaudiTool::finalize();
+    
+  
   
 }
