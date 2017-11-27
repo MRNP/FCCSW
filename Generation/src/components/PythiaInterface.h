@@ -48,7 +48,7 @@ private:
   DataHandle<fcc::FloatCollection> m_handleMePsMatchingVars{"mePsMatchingVars", Gaudi::DataHandle::Writer, this};
   
   /// Pythia8 sigma calculator(Reza)
-  std::unique_ptr<Pythia8::SigmaTotal> m_sigma;
+  //std::unique_ptr<Pythia8::SigmaTotal> m_sigma;
   
   int m_nAbort{0};
   int m_iAbort{0};
