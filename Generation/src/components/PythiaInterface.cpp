@@ -281,12 +281,6 @@ StatusCode PythiaInterface::getNextEvent(HepMC::GenEvent& theEvent) {
 
   // Handle event via standard Gaudi mechanism
   m_iEvent++;
-
-  delete toHepMC;
-  return StatusCode::SUCCESS;
-}
-
-StatusCode PythiaInterface::finalize() { 
   // mine 
   //m_sigma->SigmaTotal.sigmaTot();
   Pythia8::SigmaTotal xsec;
@@ -297,6 +291,12 @@ StatusCode PythiaInterface::finalize() {
   logging.open("Xsections_fcc.txt", std::ios_base::app); 
   logging << sigma << std::endl;
   logging.close();
+  delete toHepMC;
+  return StatusCode::SUCCESS;
+}
+
+StatusCode PythiaInterface::finalize() { 
+  
   m_pythiaSignal.reset();
   return GaudiTool::finalize();
 }
