@@ -8,7 +8,7 @@
 // Pythia
 #include "Pythia8/Pythia.h"
 #include "Pythia8Plugins/HepMC2.h"
-#include "Pythia8/SigmaTotal.h"
+
 #include <iostream>
 #include <fstream>
 
@@ -34,7 +34,7 @@ PythiaInterface::PythiaInterface(const std::string& type, const std::string& nam
       m_pythiaSignal(nullptr),
       m_nAbort(0),
       m_iAbort(0),
-      m_info.sigmaGen(0),
+      m_sigmaTot(0),
       m_iEvent(0),
       m_doMePsMatching(0),
       m_doMePsMerging(0),
@@ -290,7 +290,7 @@ StatusCode PythiaInterface::finalize() {
   return GaudiTool::finalize();
     
   // mine 
-  double sigma = m_info.sigmaGen();
+  double sigma = m_sigmaTot();
     std::cout << " Cross section is " << std::scientific << std::setprecision(5)
          << sigma <<std::endl;
   std::ofstream logging;
