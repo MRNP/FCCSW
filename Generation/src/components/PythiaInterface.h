@@ -17,6 +17,7 @@ class Pythia;
 class SlowJet;
 class JetMatchingMadgraph;
 class amcnlo_unitarised_interface;
+class SigmaTotal;
 }
 
 // Forward FCC EDM
@@ -45,13 +46,16 @@ private:
   ToolHandle<IVertexSmearingTool> m_vertexSmearingTool;
   // Output handle for ME/PS matching variables
   DataHandle<fcc::FloatCollection> m_handleMePsMatchingVars{"mePsMatchingVars", Gaudi::DataHandle::Writer, this};
-
+  
+  /// Pythia8 sigma calculator(Reza)
+  std::unique_ptr<Pythia8::SigmaTotal> m_sigma;
+  
   int m_nAbort{0};
   int m_iAbort{0};
   int m_iEvent{0};
   bool m_doMePsMatching{false};
   bool m_doMePsMerging{false};
-  double m_sigmaTot{0};
+  
 
   /// Pythia8 engine for ME/PS matching
   std::unique_ptr<Pythia8::JetMatchingMadgraph> m_matching{nullptr};
