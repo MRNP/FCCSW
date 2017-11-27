@@ -35,7 +35,7 @@ PythiaInterface::PythiaInterface(const std::string& type, const std::string& nam
       m_nAbort(0),
       m_iAbort(0),
       //Reza
-      m_sigma(0),
+      //m_sigma(0),
 
       m_iEvent(0),
       m_doMePsMatching(0),
@@ -289,7 +289,7 @@ StatusCode PythiaInterface::getNextEvent(HepMC::GenEvent& theEvent) {
 StatusCode PythiaInterface::finalize() {
   // mine 
   //m_sigma->SigmaTotal.sigmaTot();
-  double sigma = Pythia8::SigmaTotal.sigmaTot();
+  double sigma = Pythia8::Pythia.info.sigmaGen();
     std::cout << " Cross section is " << std::scientific << std::setprecision(5)
          << sigma <<std::endl;
   std::ofstream logging;
