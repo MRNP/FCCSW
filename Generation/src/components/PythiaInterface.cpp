@@ -8,6 +8,9 @@
 // Pythia
 #include "Pythia8/Pythia.h"
 #include "Pythia8Plugins/HepMC2.h"
+#include "Pythia8/SigmaTotal.h"
+#include <iostream>
+#include <fstream>
 
 // Include UserHooks for Jet Matching.
 #include "Pythia8Plugins/CombineMatchingInput.h"
@@ -284,4 +287,14 @@ StatusCode PythiaInterface::finalize() {
 
   m_pythiaSignal.reset();
   return GaudiTool::finalize();
+    
+  #mine 
+  double sigma = pythia.info.sigmaGen();
+    cout << " Cross section is " << scientific << setprecision(5)
+         << sigma <<endl;
+  ofstream logging;
+  logging.open("Xsections_fcc.txt", std::ios_base::app); 
+  logging << sigma << endl;
+  logging.close(); 
+  
 }
