@@ -288,7 +288,7 @@ StatusCode PythiaInterface::finalize() {
   m_pythiaSignal.reset();
   return GaudiTool::finalize();
     
-  #mine 
+  // mine 
   double sigma = pythia.info.sigmaGen();
     cout << " Cross section is " << scientific << setprecision(5)
          << sigma <<endl;
