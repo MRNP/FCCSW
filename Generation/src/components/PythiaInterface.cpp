@@ -294,7 +294,7 @@ StatusCode PythiaInterface::finalize() {
          << pythia.stat() <<std::endl;
   std::ofstream logging;
   logging.open("Xsections_fcc.txt", std::ios_base::app); 
-  logging << sigma << std::endl;
+  logging << pythia.stat() << std::endl;
   logging.close();
   
   m_pythiaSignal.reset();
