@@ -295,7 +295,7 @@ StatusCode PythiaInterface::finalize() {
   //logging.open("Xsections_fcc.txt", std::ios_base::app); 
   //logging << sigma << std::endl;
   //logging.close();
-  m_pythiaSignal.stat();
+  pythia.stat();
   m_pythiaSignal.reset();
   return GaudiTool::finalize();
 }
