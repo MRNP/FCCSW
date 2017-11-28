@@ -288,7 +288,7 @@ StatusCode PythiaInterface::getNextEvent(HepMC::GenEvent& theEvent) {
 
 StatusCode PythiaInterface::finalize() { 
   //Pythia8::Pythia pythia;
-  Pythia8::SigmaTotal xsec
+  Pythia8::SigmaTotal xsec;
   double sigma = xsec.sigmaTot();
     std::cout << " Cross section is " << std::scientific << std::setprecision(5)
          << sigma <<std::endl;
