@@ -287,7 +287,7 @@ StatusCode PythiaInterface::getNextEvent(HepMC::GenEvent& theEvent) {
 }
 
 StatusCode PythiaInterface::finalize() { 
-  //Pythia8::Pythia xsec;
+  Pythia8::Pythia pythia;
   //double sigma = xsec.sigmaTot();
   //  std::cout << " Cross section is " << std::scientific << std::setprecision(5)
   //       << sigma <<std::endl;
@@ -295,7 +295,7 @@ StatusCode PythiaInterface::finalize() {
   //logging.open("Xsections_fcc.txt", std::ios_base::app); 
   //logging << sigma << std::endl;
   //logging.close();
-  Pythia::stat();
+  pythia.stat();
   m_pythiaSignal.reset();
   return GaudiTool::finalize();
 }
