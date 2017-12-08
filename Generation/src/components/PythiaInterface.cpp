@@ -287,16 +287,16 @@ StatusCode PythiaInterface::getNextEvent(HepMC::GenEvent& theEvent) {
 }
 
 StatusCode PythiaInterface::finalize() { 
-  //Pythia8::Pythia pythia;
-  Pythia8::SigmaTotal xsec;
-  double sigma = xsec.sigmaTot();
-    std::cout << " Cross section is " << std::scientific << std::setprecision(5)
-         << sigma <<std::endl;
-  std::ofstream logging;
-  logging.open("Xsections_fcc.txt", std::ios_base::app); 
-  logging << sigma << std::endl;
-  logging.close();
-  
+  Pythia8::Pythia pythia;
+  //Pythia8::SigmaTotal xsec;
+  //double sigma = xsec.sigmaTot();
+  //  std::cout << " Cross section is " << std::scientific << std::setprecision(5)
+  //       << sigma <<std::endl;
+  //std::ofstream logging;
+  //logging.open("Xsections_fcc.txt", std::ios_base::app); 
+  //logging << sigma << std::endl;
+  //logging.close();
+  pythia.stat();
   m_pythiaSignal.reset();
   return GaudiTool::finalize();
 }
