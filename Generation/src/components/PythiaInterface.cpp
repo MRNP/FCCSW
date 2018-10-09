@@ -293,7 +293,7 @@ StatusCode PythiaInterface::finalize() {
     std::cout << " Cross section is " << std::scientific << std::setprecision(5)
          << sigma <<std::endl;
   std::ofstream logging;
-  logging.open("Xsections_fcc.txt", std::ios_base::app); 
+  logging.open("Xsections_fccsw.txt", std::ios_base::app); 
   logging << sigma << std::endl;
   logging.close();
   pythia.stat();
