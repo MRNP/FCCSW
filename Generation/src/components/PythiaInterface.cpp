@@ -151,11 +151,11 @@ StatusCode PythiaInterface::getNextEvent(HepMC::GenEvent& theEvent) {
     Pythia8::Event jetInput;
     jetInput.init("jet input", &(m_pythiaSignal->particleData));
     jetInput.clear();
-    for (int i = 0; i < m_pythiaSignal->event.size(); ++i)
+    for (int i = 0; i < m_pythiaSignal->event.size(); ++i){
       if (fabs(m_pythiaSignal->event[i].eta()) < 4.0) continue;
       if (m_pythiaSignal->event[i].isFinal() &&
           (m_pythiaSignal->event[i].colType() != 0 || m_pythiaSignal->event[i].isHadron()))
-        jetInput.append(m_pythiaSignal->event[i]);
+        jetInput.append(m_pythiaSignal->event[i]);}
     m_slowJet->setup(jetInput);
     // Run jet algorithm.
     std::vector<double> result;
