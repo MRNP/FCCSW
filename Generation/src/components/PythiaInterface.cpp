@@ -130,7 +130,6 @@ StatusCode PythiaInterface::getNextEvent(HepMC::GenEvent& theEvent) {
 
   // Generate events. Quit if many failures in a row
   while (!m_pythiaSignal->next()) {
-      if (fabs(m_pythiaSignal->event[i].eta()) > 2.0) continue;
     if (++m_iAbort > m_nAbort) {
 
       IIncidentSvc* incidentSvc;
@@ -153,6 +152,7 @@ StatusCode PythiaInterface::getNextEvent(HepMC::GenEvent& theEvent) {
     jetInput.init("jet input", &(m_pythiaSignal->particleData));
     jetInput.clear();
     for (int i = 0; i < m_pythiaSignal->event.size(); ++i){
+      if (fabs(m_pythiaSignal->event[i].eta()) > 1.0) continue;
       if (m_pythiaSignal->event[i].isFinal() &&
           (m_pythiaSignal->event[i].colType() != 0 || m_pythiaSignal->event[i].isHadron()))
         jetInput.append(m_pythiaSignal->event[i]);}
