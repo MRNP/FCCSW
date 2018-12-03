@@ -298,7 +298,7 @@ StatusCode PythiaInterface::finalize() {
   logging.open("Xsections_fccsw.txt", std::ios_base::app); 
   logging << sigma << std::endl;
   logging.close();
-  pythia.stat();
+  //pythia.stat();
   m_pythiaSignal.reset();
   return GaudiTool::finalize();
 }
