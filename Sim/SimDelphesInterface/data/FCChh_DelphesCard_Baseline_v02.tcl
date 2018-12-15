@@ -421,8 +421,8 @@ module Merger METefficiency {
   set InputArray EFlowMerger/eflow
   set OutputArray EFlowMerger_eflow_EtaFiltered
   # SEt the ETA cut wanted for the MET here. LHC eff. was upto eta=5
-  set EfficiencyFormula { (abs(eta) <= 1.5) * (1.0) + \
-  (abs(eta) > 1.5) * (0.00)}
+  set EfficiencyFormula { (abs(eta) <= 0.5) * (1.0) + \
+  (abs(eta) > 0.5) * (0.00)}
 }
     
 ######################
