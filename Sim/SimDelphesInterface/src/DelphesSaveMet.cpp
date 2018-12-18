@@ -52,7 +52,7 @@ StatusCode DelphesSaveMet::saveOutput(Delphes& delphes, const fcc::MCParticleCol
 
     auto met = colMET->create();
 
-    if (abs(candMET->Momentum.Eta()) >= 4.5) met.magnitude(candMET->Momentum.Pt());
+    if (abs(candMET->Momentum.Eta()) < 7.0) met.magnitude(candMET->Momentum.Pt());
     
     met.phi((-(candMET->Momentum)).Phi());
     if (saveSHT)
