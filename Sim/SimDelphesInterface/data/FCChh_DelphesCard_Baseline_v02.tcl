@@ -419,11 +419,10 @@ module Merger EFlowMerger {
 ## @@@Shehu new module 
 module Merger METefficiency {
   set InputArray EFlowMerger/eflow
-  set OutputArray EFlowMerger_eflow_EtaFiltered
+  set OutputArray EflowEtaFiltered
   # SEt the ETA cut wanted for the MET here. LHC eff. was upto eta=5
-  set EfficiencyFormula { (abs(eta) <= 0.01) * (0.00) + \
-  (abs(eta) > 0.01) * (1.00) + \
-  (abs(eta) >= 0.02) * (0.00)}
+  set EfficiencyFormula { (abs(eta) <= 2.5) * (pt > 0.00) * (1.00) + \
+  (abs(eta) > 2.5) * (0.00)}
 }
     
 ######################
@@ -447,7 +446,7 @@ module PdgCodeFilter EFlowFilter {
 
 #@@@ Shehu
 module Merger MissingET {
-  add InputArray METefficiency/EFlowMerger_eflow_EtaFiltered
+  add InputArray METefficiency/EflowEtaFiltered
   set MomentumOutputArray momentum
 }
 
