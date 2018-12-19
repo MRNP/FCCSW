@@ -7,6 +7,13 @@
 #include "datamodel/MCParticleCollection.h"
 #include "datamodel/METCollection.h"
 
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <iterator>
+#include <fstream>
+
 // ROOT
 #include "TObjArray.h"
 
