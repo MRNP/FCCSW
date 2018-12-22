@@ -52,7 +52,7 @@ StatusCode DelphesSaveMet::saveOutput(Delphes& delphes, const fcc::MCParticleCol
 
   std::ofstream logging;
   logging.open("metEta.txt", std::ios_base::app); 
-  int metCount = 0;
+  //int metCount = 0;
   for (int j = 0; j < delphesMETColl->GetEntries(); ++j) {
 
     Candidate* candSHT = nullptr;
@@ -63,7 +63,7 @@ StatusCode DelphesSaveMet::saveOutput(Delphes& delphes, const fcc::MCParticleCol
     auto met = colMET->create();
 
     if (abs(candMET->Momentum.Eta()) < 2.4 && (candMET->Momentum.Pt()) >= 140.0) {
-        metCount+=1;
+        //metCount+=1;
         met.magnitude(candMET->Momentum.Pt());}
       
     
@@ -84,7 +84,7 @@ StatusCode DelphesSaveMet::saveOutput(Delphes& delphes, const fcc::MCParticleCol
               << std::setw(9) << met.scalarSum() << std::fixed << endmsg;
     }  // Debug
   }
-  logging << metCount << std::endl;
+  //logging << metCount << std::endl;
   logging.close();
   return StatusCode::SUCCESS;
 }
