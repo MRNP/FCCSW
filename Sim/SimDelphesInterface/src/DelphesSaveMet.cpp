@@ -51,7 +51,7 @@ StatusCode DelphesSaveMet::saveOutput(Delphes& delphes, const fcc::MCParticleCol
   }
 
   std::ofstream logging;
-  logging.open("Eta.txt", std::ios_base::app); 
+  logging.open("metEta.txt", std::ios_base::app); 
   int metCount = 0;
   for (int j = 0; j < delphesMETColl->GetEntries(); ++j) {
 
