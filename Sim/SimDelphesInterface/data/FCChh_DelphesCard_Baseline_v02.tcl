@@ -21,6 +21,7 @@ set ExecutionPath {
 
   ChargedHadronMomentumSmearing
   ElectronMomentumSmearing
+  MuonMomentumSmearingEtaCut
   MuonMomentumSmearing
 
   TrackMerger
@@ -178,9 +179,21 @@ module MomentumSmearing ElectronMomentumSmearing {
 ###############################
 # Momentum resolution for muons
 ###############################
+## Added by Reza
+module MomentumSmearing MuonMomentumSmearingEtaCut {
+  set InputArray MuonTrackingEfficiency/muons
+  set OutputArray muonsEtaCut
+
+  # # TBC for just putting tracker resolution/ need to add improvement at high pT
+
+  # source muonMomentumResolutionVsP.tcl 
+  set EfficiencyFormula { 
+  (abs(eta) < 2.4) * (1.00) + \
+  (abs(eta) >= 2.4) * (0.00)}
+}
 
 module MomentumSmearing MuonMomentumSmearing {
-  set InputArray MuonTrackingEfficiency/muons
+  set InputArray MuonMomentumSmearingEtaCut/muonsEtaCut
   set OutputArray muons
 
   # TBC for just putting tracker resolution/ need to add improvement at high pT
