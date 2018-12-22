@@ -97,6 +97,8 @@ out_names = {
     "muons": {"particles": "muons", "mcAssociations": "muonsToMC", "isolationTags": "muonITags"},
     # Electron output tool
     "electrons": {"particles": "electrons", "mcAssociations": "electronsToMC", "isolationTags": "electronITags"},
+    # Neutrino output tool
+    "neutrinos": {"particles": "neutrinos", "mcAssociations": "neutrinosToMC", "isolationTags": "neutrinoITags"},
     # Photons output tool
     "photons": {"particles": "photons", "mcAssociations": "photonsToMC", "isolationTags": "photonITags"},
     # GenJets output tool
@@ -132,6 +134,9 @@ apply_paths(muonSaveTool, out_names["muons"])
 
 eleSaveTool = DelphesSaveChargedParticles("electrons", delphesArrayName="ElectronFilter/electrons")
 apply_paths(eleSaveTool, out_names["electrons"])
+
+neuSaveTool = DelphesSaveNeutralParticles("neutrinos", delphesArrayName="NeutrinoFilter/neutrinos")
+apply_paths(neuSaveTool, out_names["neutrinos"])
 
 chhadSaveTool = DelphesSaveChargedParticles("pfcharged", delphesArrayName="ChargedHadronFilter/chargedHadrons", saveIsolation=False)
 apply_paths(chhadSaveTool, out_names["pfcharged"])
@@ -174,6 +179,7 @@ delphessim = DelphesSimulation(DelphesCard=delphesCard,
                                OutputLevel=messageLevelDelphes,
                                outputs=["DelphesSaveChargedParticles/muons",
                                         "DelphesSaveChargedParticles/electrons",
+					"DelphesSaveNeutralParticles/neutrinos",
                                         "DelphesSaveNeutralParticles/photons",
                                         "DelphesSaveChargedParticles/pfcharged",
                                         "DelphesSaveNeutralParticles/pfphotons",
