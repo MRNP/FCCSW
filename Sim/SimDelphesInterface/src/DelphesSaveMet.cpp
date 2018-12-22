@@ -64,10 +64,11 @@ StatusCode DelphesSaveMet::saveOutput(Delphes& delphes, const fcc::MCParticleCol
 
     if (abs(candMET->Momentum.Eta()) < 2.4 && (candMET->Momentum.Pt()) >= 140.0) {
         //metCount+=1;
-        met.magnitude(candMET->Momentum.Pt());}
-      
+        logging << abs(candMET->Momentum.Eta()) << " " << candMET->Momentum.Pt() << std::endl;
+        }
+    met.magnitude(candMET->Momentum.Pt());  
     
-    logging << abs(candMET->Momentum.Eta()) << std::endl;
+    
     
       
     met.phi((-(candMET->Momentum)).Phi());
