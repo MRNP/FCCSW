@@ -65,6 +65,7 @@ StatusCode DelphesSaveMet::saveOutput(Delphes& delphes, const fcc::MCParticleCol
     //if (abs(candMET->Momentum.Eta()) < 2.4 && (candMET->Momentum.Pt()) >= 140.0) {
         //metCount+=1;
         met.magnitude(candMET->Momentum.Pt());
+        met.px(candMET->Momentum.Px())
      //   }
      //else 
      //{met.magnitude(-1);}     
