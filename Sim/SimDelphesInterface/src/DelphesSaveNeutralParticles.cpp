@@ -9,6 +9,15 @@
 #include "datamodel/ParticleCollection.h"
 #include "datamodel/ParticleMCParticleAssociationCollection.h"
 #include "datamodel/TaggedParticleCollection.h"
+
+// Added by Reza
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+#include <iterator>
+#include <fstream>
+
 // ROOT
 #include "TObjArray.h"
 DECLARE_TOOL_FACTORY(DelphesSaveNeutralParticles)
@@ -45,6 +54,9 @@ StatusCode DelphesSaveNeutralParticles::saveOutput(Delphes& delphes, const fcc::
     return StatusCode::SUCCESS;
   }
 
+  std::ofstream logging;
+logging.open("neutData.txt", std::ios_base::app);
+logging << "## PID   Status   Px  Py  Pz   M   Charge:" << std::endl;
   for (int j = 0; j < delphesColl->GetEntries(); j++) {
 
     auto cand = static_cast<Candidate*>(delphesColl->At(j));
@@ -62,7 +74,11 @@ StatusCode DelphesSaveNeutralParticles::saveOutput(Delphes& delphes, const fcc::
     barePart.vertex.y = cand->InitialPosition.Y();
     barePart.vertex.z = cand->InitialPosition.Z();
     particle.core(barePart);
-
+    
+    //Added by Reza
+    logging << cand->PID << " " << cand->Status << " " << cand->Momentum.Px() << " " << cand->Momentum.Py() << " " << cand->Momentum.Pz() << " " << cand->Momentum.M() << " " << cand->Charge << std::endl;
+    
+    
     // Isolation-tag info
     float iTagValue = 0;
     if (colITags != nullptr) {
@@ -150,5 +166,6 @@ StatusCode DelphesSaveNeutralParticles::saveOutput(Delphes& delphes, const fcc::
     // Debug: print end-line
     if (msgLevel() <= MSG::DEBUG) debug() << endmsg;
   }  // For - towers
+  logging.close();
   return StatusCode::SUCCESS;
 }
